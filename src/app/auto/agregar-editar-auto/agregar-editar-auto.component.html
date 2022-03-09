@@ -1,0 +1,19 @@
+<form>
+    <div class="mb-3">
+        <label for="tipoAutoId" class="form-label">Tipo de Auto</label>
+        <input type="text" class="form-control" name="tipoAutoId" [(ngModel)]="tipoAutoId" *ngIf="auto.id!=0" disabled>
+        <select class="form-control" name="tipoAutoId" id="tipoAutoId" [(ngModel)]="tipoAutoId" *ngIf="auto.id==0">
+            <option *ngFor="let tipo of tiposAutoList$|async" [value]="tipo.id">{{tipo.nombreTipoAuto}}</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="modelo" class="form-label">Modelo</label>
+        <input type="text" class="form-control" [(ngModel)]="modelo" name="modelo">
+    </div>
+    <div class="mb-3">
+        <label for="color" class="form-label">Color</label>
+        <input type="text" class="form-control" [(ngModel)]="color" name="color">
+    </div>
+    <button (click)="addAuto()" *ngIf="auto.id==0" class="btn btn-primary">Agregar</button>
+    <button (click)="editAuto()" *ngIf="auto.id!=0" class="btn btn-primary">Editar</button>
+</form>
